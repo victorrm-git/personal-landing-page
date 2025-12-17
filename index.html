@@ -1,0 +1,452 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Victor Rodriguez</title>
+  <meta name="description" content="Portfolio personal de Victor Rodriguez. Servicios, newsletter y contacto." />
+
+  <style>
+    :root{
+      --bg:#ffffff;
+      --text:#0f172a;
+      --muted:#64748b;
+      --muted2:#475569;
+      --line:#e5e7eb;
+      --card:#ffffff;
+      --shadow:0 1px 0 rgba(15,23,42,.04), 0 8px 28px rgba(15,23,42,.06);
+      --radius:20px;
+      --radius2:14px;
+      --max:980px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font:16px/1.65 ui-sans-serif, system-ui, -apple-system, Segoe UI, Inter, Roboto, Arial;
+      background:var(--bg);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
+    }
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 24px}
+
+    /* ---------------- Topbar (sticky) ---------------- */
+    header.topbar{
+      position:sticky; top:0; z-index:20;
+      backdrop-filter:saturate(160%) blur(10px);
+      background:rgba(255,255,255,.78);
+      border-bottom:1px solid rgba(229,231,235,.9);
+    }
+    .nav{
+      height:64px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+    }
+    .brand{font-weight:600; letter-spacing:-.01em}
+    nav a{
+      color:var(--muted);
+      padding:8px 10px;
+      border-radius:12px;
+      font-size:14px;
+    }
+    nav a:hover{background:#f8fafc; color:var(--text)}
+    @media (max-width:720px){
+      nav{display:none}
+    }
+
+    /* ---------------- HERO ---------------- */
+    .hero{
+      padding:110px 0 70px;
+      text-align:center;
+    }
+    .hero-inner{max-width:740px; margin:0 auto}
+    .avatar-wrap{
+      position:relative;
+      width:128px; height:128px;
+      margin:0 auto 30px;
+    }
+    .avatar-wrap::before{
+      content:"";
+      position:absolute;
+      inset:-18px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(15,23,42,.10), transparent 70%);
+      opacity:.55;
+    }
+    .avatar-wrap img{
+      position:relative;
+      width:100%; height:100%;
+      object-fit:cover;
+      border-radius:50%;
+      border:4px solid #fff;
+      box-shadow:0 0 0 1px var(--line);
+    }
+    .hero h1{
+      margin:0;
+      font-size:44px;
+      font-weight:650;
+      letter-spacing:-0.03em;
+    }
+    .role{
+      margin:10px 0 18px;
+      font-size:18px;
+      font-weight:500;
+      color:var(--muted);
+    }
+    .intro{
+      max-width:64ch;
+      margin:0 auto 26px;
+      font-size:17px;
+      color:var(--muted2);
+    }
+
+    .actions{
+      display:flex;
+      justify-content:center;
+      gap:12px;
+      flex-wrap:wrap;
+      margin:18px 0 34px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:12px 14px;
+      border-radius:12px;
+      border:1px solid var(--line);
+      background:#fff;
+      color:var(--text);
+      font-size:14px;
+      font-weight:550;
+      box-shadow:0 1px 0 rgba(15,23,42,.03);
+      transition:transform .14s ease, background .14s ease, border-color .14s ease;
+    }
+    .btn:hover{
+      transform:translateY(-1px);
+      background:#f8fafc;
+      border-color:#cbd5e1;
+    }
+    .btn.primary{
+      background:var(--text);
+      border-color:var(--text);
+      color:#fff;
+    }
+    .btn.primary:hover{background:#111c33}
+
+    .social{
+      display:flex;
+      justify-content:center;
+      gap:12px;
+    }
+    .social a{
+      width:44px; height:44px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:12px;
+      border:1px solid var(--line);
+      color:var(--muted);
+      font-size:14px;
+      transition:all .15s ease;
+    }
+    .social a:hover{
+      color:var(--text);
+      border-color:#cbd5e1;
+      transform:translateY(-2px);
+      background:#f8fafc;
+    }
+
+    /* ---------------- Sections ---------------- */
+    section{
+      padding:86px 0;
+      border-top:1px solid var(--line);
+    }
+    h2{
+      font-size:28px;
+      margin:0 0 14px;
+      letter-spacing:-0.02em;
+    }
+    p{margin:0 0 14px; color:var(--muted2)}
+    .lead{font-size:16px; color:var(--muted2); max-width:68ch}
+    .grid{display:grid; gap:22px}
+    .grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+    @media (max-width:900px){
+      .grid-2,.grid-3{grid-template-columns:1fr}
+      .hero{padding:95px 0 60px}
+      .hero h1{font-size:38px}
+    }
+
+    .card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:26px;
+      box-shadow:var(--shadow);
+    }
+    .card h3{
+      margin:0 0 10px;
+      font-size:16px;
+      letter-spacing:-.01em;
+    }
+
+    .tagwrap{margin-top:10px}
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid #e2e8f0;
+      background:#f8fafc;
+      color:#334155;
+      font-size:12px;
+      margin:0 8px 8px 0;
+    }
+
+    /* ---------------- Forms ---------------- */
+    form{display:grid; gap:12px}
+    label{font-size:12px; color:var(--muted); font-weight:600}
+    input, textarea{
+      width:100%;
+      padding:14px 14px;
+      border-radius:12px;
+      border:1px solid var(--line);
+      background:#fff;
+      color:var(--text);
+      font-size:14px;
+      font-family:inherit;
+      outline:none;
+      transition:border-color .12s ease, box-shadow .12s ease;
+    }
+    input:focus, textarea:focus{
+      border-color:#cbd5e1;
+      box-shadow:0 0 0 4px rgba(148,163,184,.25);
+    }
+    textarea{min-height:130px; resize:vertical}
+
+    .note{font-size:12px; color:var(--muted); margin-top:6px}
+
+    /* ---------------- Footer ---------------- */
+    footer{
+      padding:36px 0;
+      border-top:1px solid var(--line);
+      text-align:center;
+      font-size:13px;
+      color:var(--muted);
+    }
+
+    /* ---------------- Subtle reveal ---------------- */
+    .reveal{opacity:0; transform:translateY(10px); transition:.55s ease}
+    .reveal.show{opacity:1; transform:none}
+  </style>
+</head>
+
+<body>
+
+  <!-- Sticky nav -->
+  <header class="topbar">
+    <div class="wrap nav">
+      <a class="brand" href="#home">Victor Rodriguez</a>
+      <nav aria-label="Secciones">
+        <a href="#about">Quién soy</a>
+        <a href="#services">Servicios</a>
+        <a href="#newsletter">Newsletter</a>
+        <a href="#contact">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO / HOME -->
+  <main>
+    <section id="home" class="hero" style="border-top:none;">
+      <div class="wrap hero-inner reveal">
+        <div class="avatar-wrap">
+          <img src="https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png" alt="Victor Rodriguez">
+        </div>
+
+        <h1>Victor Rodriguez</h1>
+        <div class="role">Senior Software Engineer</div>
+
+        <p class="intro">
+          Ayudo a <strong>equipos y negocios</strong> a construir experiencias web rápidas, claras y mantenibles.
+          Especializado en <strong>front-end</strong> y producto.
+        </p>
+
+        <div class="actions">
+          <a class="btn primary" href="#contact">Contactar</a>
+          <a class="btn" href="#services">Ver servicios</a>
+        </div>
+
+        <div class="social" aria-label="Redes sociales">
+          <a href="#" target="_blank" rel="noreferrer" aria-label="LinkedIn">in</a>
+          <a href="#" target="_blank" rel="noreferrer" aria-label="GitHub">GH</a>
+          <a href="#" target="_blank" rel="noreferrer" aria-label="X">𝕏</a>
+          <a href="#" target="_blank" rel="noreferrer" aria-label="YouTube">▶</a>
+          <a href="mailto:tuemail@tudominio.com" aria-label="Email">✉</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="wrap grid grid-2">
+        <div class="reveal">
+          <h2>Quién soy</h2>
+          <p class="lead">
+            Una bio corta (3–5 líneas). Qué haces, para quién, y qué te diferencia.
+            Si puedes, añade una prueba: años, proyectos, impacto, etc.
+          </p>
+
+          <div class="tagwrap">
+            <span class="tag">TypeScript</span>
+            <span class="tag">React</span>
+            <span class="tag">Node.js</span>
+            <span class="tag">UX / UI</span>
+            <span class="tag">Performance</span>
+          </div>
+        </div>
+
+        <div class="card reveal">
+          <h3>Enlaces rápidos</h3>
+          <p style="margin-top:8px">
+            • <a href="#" target="_blank" rel="noreferrer">LinkedIn</a><br>
+            • <a href="#" target="_blank" rel="noreferrer">GitHub</a><br>
+            • <a href="#" target="_blank" rel="noreferrer">Portfolio / Proyectos</a><br>
+          </p>
+          <p class="note">Tip: añade aquí tu “mejor” link (CV, Calendly, case study).</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services">
+      <div class="wrap">
+        <div class="reveal">
+          <h2>Servicios</h2>
+          <p class="lead">Pocos servicios, claros y orientados a resultado.</p>
+        </div>
+
+        <div class="grid grid-3" style="margin-top:18px">
+          <div class="card reveal">
+            <h3>Landing Pages</h3>
+            <p>Una página rápida para comunicar y convertir. Copy, diseño e implementación.</p>
+            <p class="note">Ideal para: lanzamientos, captación, servicios.</p>
+          </div>
+          <div class="card reveal">
+            <h3>Web / Portfolio</h3>
+            <p>One-page minimalista, rápida y limpia, enfocada en claridad y contacto.</p>
+            <p class="note">Ideal para: marca personal, freelance, consultoría.</p>
+          </div>
+          <div class="card reveal">
+            <h3>Mejoras y mantenimiento</h3>
+            <p>Performance, SEO básico, accesibilidad y refactor para que tu web “vuele”.</p>
+            <p class="note">Ideal para: webs lentas o desactualizadas.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <section id="newsletter">
+      <div class="wrap grid grid-2">
+        <div class="reveal">
+          <h2>Newsletter</h2>
+          <p class="lead">
+            Un email al mes con ideas prácticas sobre <strong>[tu tema]</strong>. Sin spam.
+            Baja en 1 clic.
+          </p>
+          <p class="note">
+            Para que funcione “de verdad”, conecta el formulario a Mailchimp/Brevo/ConvertKit/Substack (más adelante).
+          </p>
+        </div>
+
+        <div class="card reveal">
+          <!-- Sustituye action por el proveedor que uses -->
+          <form action="#" method="post">
+            <div>
+              <label for="nemail">Email</label>
+              <input id="nemail" name="email" type="email" placeholder="tu@email.com" required>
+            </div>
+            <button class="btn primary" type="submit" style="width:100%">Suscribirme</button>
+            <div class="note">Al suscribirte aceptas la política de privacidad.</div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="wrap grid grid-2">
+        <div class="reveal">
+          <h2>Contacto</h2>
+          <p class="lead">
+            Cuéntame qué necesitas y te respondo con una propuesta simple.
+          </p>
+          <p class="note">
+            Email: <a href="mailto:tuemail@tudominio.com">tuemail@tudominio.com</a><br>
+            Ubicación: Remoto / Ciudad (opcional)
+          </p>
+        </div>
+
+        <div class="card reveal">
+          <!-- Sin backend: abre tu cliente de correo -->
+          <form onsubmit="return sendMail(event)">
+            <div>
+              <label for="name">Nombre</label>
+              <input id="name" name="name" type="text" placeholder="Tu nombre" required>
+            </div>
+
+            <div>
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" placeholder="tu@email.com" required>
+            </div>
+
+            <div>
+              <label for="msg">Mensaje</label>
+              <textarea id="msg" name="msg" placeholder="¿En qué puedo ayudarte?" required></textarea>
+            </div>
+
+            <button class="btn primary" type="submit" style="width:100%">Enviar</button>
+            <div class="note">Esto abre tu cliente de correo. Si quieres formulario real, usa Formspree/Netlify Forms.</div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="y"></span> Victor Rodriguez · <a href="#">Privacidad</a>
+  </footer>
+
+  <script>
+    // Año footer
+    document.getElementById("y").textContent = new Date().getFullYear();
+
+    // Reveal on scroll
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e => { if(e.isIntersecting) e.target.classList.add("show"); });
+    }, { threshold: 0.12 });
+    document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+
+    // Contacto via mailto (sin backend)
+    function sendMail(e){
+      e.preventDefault();
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const msg = document.getElementById("msg").value.trim();
+      const subject = encodeURIComponent(`Contacto desde portfolio — ${name}`);
+      const body = encodeURIComponent(`Nombre: ${name}\nEmail: ${email}\n\nMensaje:\n${msg}`);
+      window.location.href = `mailto:tuemail@tudominio.com?subject=${subject}&body=${body}`;
+      return false;
+    }
+  </script>
+
+</body>
+</html>
