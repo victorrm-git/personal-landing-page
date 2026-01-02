@@ -61,8 +61,6 @@ The landing page is divided into clear, purposeful sections:
 
 ## 🖼️ Screenshots
 
-_Add your own screenshots here to show how awesome it looks 👇_
-
 <img width="730" height="801" alt="image" src="https://github.com/user-attachments/assets/1d08884b-b60a-4cc1-a1cd-1bd7889a19fa" />
 
 <img width="752" height="665" alt="image" src="https://github.com/user-attachments/assets/1613f301-a770-4a07-8ffe-eb3fe77f1c96" />
